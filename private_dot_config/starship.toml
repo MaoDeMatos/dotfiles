@@ -1,0 +1,190 @@
+# Get editor completion based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+# Format of the main prompt
+format = """$character$os$all🦊 """
+
+# Inserts content to the right prompt on supported shells
+right_format = """$time"""
+
+palette = "custom"
+
+[palettes.custom]
+orange = "#ffb86c"
+
+# First symbol of the prompt
+[character]
+success_symbol = '[❯❯](bold green)'
+error_symbol = '[❯❯](bold red)'
+
+[username]
+show_always = true
+style_root = "red bold"
+style_user = "purple bold"
+format = "[$user]($style) in "
+
+[hostname]
+ssh_symbol = "[ ](cyan)"
+
+[directory]
+read_only = " 󰌾"
+
+[time]
+disabled = false
+format = '$time ' # Remove style
+
+[memory_usage]
+symbol = "󰍛 "
+
+[git_branch]
+symbol = " "
+style = "bold red"
+
+[git_status]
+stashed = '◆ $count '
+conflicted = '✘ '
+modified = '[!=](yellow) '
+staged = '[++\($count\)](orange) '
+deleted = ""
+renamed = ""
+
+untracked = "[?](yellow) "
+up_to_date = '[√](green)'
+ahead = '↑ ${count}'
+behind = '↓ ${count}'
+diverged = '⇕ ↑ ${ahead_count} ↓ ${behind_count}'
+format = "([\\[$all_status$ahead_behind\\]]($style)) "
+
+# Languages/envs
+[os]
+disabled = false
+style = "bold white"
+format = "[$symbol]($style) "
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = "[ ](orange)"
+Unknown = " "
+Windows = "[󰍲 ](cyan)"
+
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[fossil_branch]
+symbol = " "
+
+[golang]
+symbol = " "
+
+[guix_shell]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[haxe]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[meson]
+symbol = "󰔷 "
+
+[nim]
+symbol = "󰆥 "
+
+[nix_shell]
+symbol = " "
+
+[nodejs]
+symbol = " "
+
+[package]
+symbol = "󰏗 "
+
+[pijul_channel]
+symbol = " "
+
+[python]
+symbol = " "
+
+[rlang]
+symbol = "󰟔 "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = " "
+
+[scala]
+symbol = " "
