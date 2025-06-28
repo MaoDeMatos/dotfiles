@@ -64,7 +64,7 @@ COMPLETION_WAITING_DOTS="true"
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-source $HOME/.profile
+source $HOME/.config/zsh/main.zsh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -89,15 +89,6 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
-if type rg &> /dev/null; then
-  export FZF_DEFAULT_COMMAND='rg --files --hidden -g "!**/.git"'
-  export FZF_DEFAULT_OPTS='-m --reverse'
-fi
-
-# . "$HOME/.local/bin/env"
-
-alias cdp='cd ~/projects'
 
 # Init Starship's custom prompt
 eval "$(starship init zsh)"
