@@ -1,0 +1,23 @@
+[user]
+	name = {{ .fullName | quote }}
+	email = {{ .email | quote }}
+
+[status]
+	short = true
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+
+[alias]
+	tree = log --graph --all --date=relative --pretty=format:'%C(yellow)%h %C(green)%an %C(magenta)%ad%C(auto)%d %C(reset)%s'
+
+[core]
+	pager = less -S
+	editor = "nvim"
+	eol = lf
+	autocrlf = input
+
+[init]
+	defaultBranch = main
