@@ -1,0 +1,34 @@
+[user]
+	name = Mao De Matos
+	email = mao.dematos@gmail.com
+#  signingkey = <signingkeyID>
+#
+#[commit]
+#	gpgsign = true
+#
+#[credential]
+#	helper = store
+
+[status]
+	short = true
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+
+#[gpg]
+#	program = /mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe # For WSL
+
+[alias]
+	tree = log --graph --all --date=relative --pretty=format:'%C(yellow)%h %C(green)%an %C(magenta)%ad%C(auto)%d %C(reset)%s'
+	dotfiles = !git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME
+
+[core]
+	pager = less -S
+	editor = "nvim"
+	eol = lf
+	autocrlf = input
+
+[init]
+	defaultBranch = main
