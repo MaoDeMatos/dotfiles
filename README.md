@@ -9,7 +9,7 @@ Setup SSH keys.
 Install:
 
 - `chezmoi` (dotfiles management)
-- `zsh`, `starship` & `wezterm` (terminal setup)
+- `zsh starship`
 
 Run
 
