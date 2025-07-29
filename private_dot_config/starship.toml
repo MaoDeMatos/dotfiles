@@ -1,19 +1,20 @@
 # Get editor completion based on the config schema
 '$schema' = 'https://starship.rs/config-schema.json'
 
-# Inserts a blank line between shell prompts
-add_newline = true
+add_newline = false
+continuation_prompt = "[❯❯ ](dimmed white)"
 
-# Format of the main prompt
-format = '''$character$os$all🦊 '''
+format = """($nix_shell$container$fill$git_metrics$cmd_duration\n)\
+$character$os$username$directory$git_branch$git_status\n\
+🦊 """
+right_format = """$all$battery$time"""
 
-# Inserts content to the right prompt on supported shells
-right_format = '''$battery$time'''
+[fill]
+symbol = ' '
 
-# First symbol of the prompt
 [character]
-success_symbol = '[❯❯](bold green)'
-error_symbol = '[❯❯](bold red)'
+success_symbol = '[❯❯](green)'
+error_symbol = '[❯❯](red)'
 
 [username]
 show_always = true
@@ -24,33 +25,60 @@ format = '[$user]($style) in '
 [directory]
 read_only = ' 󰌾'
 
+[cmd_duration]
+min_time = 0
+format = "[ took $duration](italic white)"
+
 # Battery display at different levels
+[battery]
+format = "[ $percentage $symbol]($style)"
+full_symbol = "󰁹"
+charging_symbol = "[󰂄](italic bold green)"
+discharging_symbol = "󱟞"
+unknown_symbol = "󰂑"
+empty_symbol = "󱊡"
+
 [[battery.display]]
 threshold = 25
-style = 'bold red'
+style = 'italic bold red'
 
 [[battery.display]]
-threshold = 40
-style = 'bold yellow'
+threshold = 60
+style = 'italic dimmed bright-purple'
 
 [[battery.display]]
-threshold = 100
-style = 'white'
+threshold = 90
+style = "italic dimmed bright-green"
 
 [time]
 disabled = false
-format = '$time' # Remove style
+format = "[ $time]($style)"
+time_format = "%R"
+utc_time_offset = "local"
+style = "italic dimmed white"
 
 # [memory_usage]
 # symbol = '󰍛 '
 
+# Git informations
 [git_branch]
 symbol = ' '
 style = 'bold red'
+truncation_symbol = "⋯"
+truncation_length = 11
+ignore_branches = ["main", "master"]
+only_attached = true
 
 [git_commit]
 tag_symbol = '  '
 style = 'bold yellow'
+
+[git_metrics]
+format = '([▴$added]($added_style))([▿$deleted]($deleted_style))'
+added_style = 'italic dimmed green'
+deleted_style = 'italic dimmed red'
+ignore_submodules = true
+disabled = false
 
 [git_status]
 stashed = '◆ $count '
@@ -64,7 +92,6 @@ up_to_date = '[√](green)'
 ahead = '↑ ${count}'
 behind = '↓ ${count}'
 diverged = '⇕ ↑ ${ahead_count} ↓ ${behind_count}'
-
 format = "([\\[$all_status$ahead_behind\\]]($style)) "
 
 # Languages/envs
@@ -208,7 +235,12 @@ symbol = "󰔷 "
 symbol = "󰆥 "
 
 [nix_shell]
+style = 'bold italic dimmed blue'
 symbol = " "
+format = '[$symbol nix⎪$state⎪]($style) [$name](italic dimmed white)'
+impure_msg = '[⌽](bold dimmed red)'
+pure_msg = '[⌾](bold dimmed green)'
+unknown_msg = '[◌](bold dimmed ellow)'
 
 [nodejs]
 symbol = " "
