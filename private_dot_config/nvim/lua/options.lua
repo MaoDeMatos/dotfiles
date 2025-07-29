@@ -2,6 +2,9 @@ require "nvchad.options"
 
 local o = vim.o
 
+-- Pickup current caelestia theme
+-- o.colorscheme = "m3scheme"
+
 o.cursorlineopt = "both"
 o.encoding = "utf-8"
 o.showmatch = true
@@ -26,7 +29,7 @@ o.wrap = true -- line wrap
 o.splitbelow = true
 o.splitright = true
 
-o.scrolloff = 8 -- number of lines to display ahead of the cursor
+o.scrolloff = 4 -- number of lines to display ahead of the cursor
 o.signcolumn = "yes" -- always display symbols gutter (avoids jumping gutter when no symbols are displayed)
 
 o.clipboard = "unnamedplus"
