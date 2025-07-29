@@ -30,6 +30,7 @@ return {
         "stylua",
         "html-lsp",
         "css-lsp",
+        "prettier",
         "prettierd",
         -- "pyre", -- Python type checker
         "ruff",
