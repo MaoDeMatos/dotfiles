@@ -1,0 +1,92 @@
+{
+  "appearance": {
+    "font": {
+      "family": {
+        "material": "Material Symbols Rounded",
+        "mono": "Iosevka Term SS12",
+        "sans": "IBM Plex Sans"
+      }
+    },
+    "transparency": {
+      "enabled": false,
+      "base": 0.85,
+      "layers": 0.4
+    }
+  },
+  "general": {
+    "apps": {
+      "terminal": ["foot"],
+      "audio": ["pwvucontrol"]
+    }
+  },
+  "background": {
+    "enabled": true
+  },
+  "bar": {
+    "dragThreshold": 20,
+    "persistent": true,
+    "showOnHover": true,
+    "status": {
+      "showAudio": true,
+      "showBattery": true,
+      "showBluetooth": true,
+      "showKbLayout": false,
+      "showNetwork": true
+    },
+    "workspaces": {
+      "activeIndicator": true,
+      "activeLabel": "",
+      "activeTrail": false,
+      "label": " ",
+      "occupiedBg": false,
+      "occupiedLabel": " ",
+      "rounded": true,
+      "showWindows": false,
+      "shown": 5
+    }
+  },
+  "border": {
+    "rounding": 25,
+    "thickness": 10
+  },
+  "dashboard": {
+    "mediaUpdateInterval": 1000,
+    "visualiserBars": 30
+  },
+  "launcher": {
+    "actionPrefix": ">",
+    "dragThreshold": 50,
+    "vimKeybinds": true,
+    "enableDangerousActions": false,
+    "maxShown": 6,
+    "maxWallpapers": 9,
+    "useFuzzy": {
+      "apps": false,
+      "actions": false,
+      "schemes": false,
+      "variants": false,
+      "wallpapers": false
+    }
+  },
+  "lock": {
+    "maxNotifs": 5
+  },
+  "notifs": {
+    "actionOnClick": false,
+    "clearThreshold": 0.3,
+    "defaultExpireTimeout": 6000,
+    "expandThreshold": 20,
+    "expire": true
+  },
+  "osd": {
+    "hideDelay": 2000
+  },
+  "services": {
+    "audioIncrement": 0.02,
+    "useFahrenheit": false
+  },
+  "session": {
+    "dragThreshold": 30,
+    "vimKeybinds": true
+  }
+}
