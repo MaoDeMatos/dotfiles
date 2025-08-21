@@ -30,8 +30,12 @@
       "showAudio": true,
       "showBattery": true,
       "showBluetooth": true,
-      "showKbLayout": false,
+      "showKbLayout": true,
       "showNetwork": true
+    },
+    "tray": {
+      "background": false,
+      "recolour": true
     },
     "workspaces": {
       "activeIndicator": true,
@@ -46,12 +50,12 @@
     }
   },
   "border": {
-    "rounding": 25,
-    "thickness": 10
+    "rounding": 24,
+    "thickness": 8
   },
   "dashboard": {
     "mediaUpdateInterval": 1000,
-    "visualiserBars": 30
+    "visualiserBars": 32
   },
   "launcher": {
     "actionPrefix": ">",
@@ -69,7 +73,7 @@
     }
   },
   "lock": {
-    "maxNotifs": 5
+    "recolourLogo": true
   },
   "notifs": {
     "actionOnClick": false,
@@ -87,6 +91,6 @@
   },
   "session": {
     "dragThreshold": 30,
-    "vimKeybinds": true
+    "vimKeybinds": false
   }
 }
