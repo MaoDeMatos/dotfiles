@@ -28,6 +28,7 @@ plugins=(
   # rust
   golang
   uv # python package manager
+  auto-venv
 )
 
 # Uncomment one of the following lines to change the auto-update behavior
