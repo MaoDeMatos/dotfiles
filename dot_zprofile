@@ -10,6 +10,7 @@ fi
 
 export EDITOR='nvim'
 
+# TODO: This should be Linux-only
 # Run GUI
 if uwsm check may-start; then
     exec uwsm start hyprland-uwsm.desktop

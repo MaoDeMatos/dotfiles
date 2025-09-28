@@ -4,7 +4,14 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+zstyle ':omz:plugins:uv' lazy yes
 zstyle ':omz:plugins:nvm' lazy yes
+zstyle ':omz:plugins:bun' lazy yes
+zstyle ':omz:plugins:golang' lazy yes
+zstyle ':omz:plugins:kubectl' lazy yes
+
+zstyle ':omz:plugins:fancy-ctrl-z' lazy yes
+zstyle ':omz:plugins:colored-man-pages' lazy yes
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
@@ -21,10 +28,10 @@ plugins=(
   # zsh-syntax-highlighting
   # docker
   # docker-compose
-  # kubectl
+  kubectl
 
   nvm
-
+  bun
   # rust
   golang
   uv # python package manager
@@ -74,7 +81,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"

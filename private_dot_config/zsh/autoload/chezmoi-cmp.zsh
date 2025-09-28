@@ -1,7 +1,7 @@
 #compdef chezmoi
 compdef _chezmoi chezmoi
 
-# zsh completion for chezmoi                              -*- shell-script -*-
+# zsh completion for chezmoi
 
 __chezmoi_debug()
 {
