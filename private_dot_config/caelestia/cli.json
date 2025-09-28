@@ -1,0 +1,72 @@
+{
+  "theme": {
+    "enableTerm": true,
+    "enableHypr": true,
+    "enableDiscord": true,
+    "enableSpicetify": false,
+    "enableFuzzel": true,
+    "enableBtop": true,
+    "enableGtk": true,
+    "enableQt": true
+  },
+  "toggles": {
+    "communication": {
+      "discord": {
+        "enable": true,
+        "match": [{ "class": "discord" }],
+        "command": ["discord"],
+        "move": true
+      }
+    },
+    "music": {
+      "YouTube Music": {
+        "enable": true,
+        "match": [
+          { "class": "com.github.th_ch.youtube_music" },
+          { "initialTitle": "Youtube Music" }
+        ],
+        "command": ["youtube-music"],
+        "move": true
+      }
+    },
+    "sysmon": {
+      "btop": {
+        "enable": true,
+        "match": [
+          {
+            "class": "btop",
+            "title": "btop",
+            "workspace": { "name": "special:sysmon" }
+          }
+        ],
+        "command": [
+          "foot",
+          "-a",
+          "btop",
+          "-T",
+          "btop",
+          "fish",
+          "-C",
+          "exec btop"
+        ]
+      }
+    },
+    "todo": {
+      "quick-notes": {
+        "enable": true,
+        "match": [{ "class": "quick-notes", "initialTitle": "quick-notes" }],
+        "command": [
+          "foot",
+          "-a",
+          "quick-notes",
+          "-T",
+          "quick-notes",
+          "fish",
+          "-C",
+          "exec nvim ~/quick-notes.md"
+        ],
+        "move": true
+      }
+    }
+  }
+}

@@ -4,13 +4,8 @@
       "family": {
         "material": "Material Symbols Rounded",
         "mono": "Iosevka Term SS12",
-        "sans": "IBM Plex Sans"
+        "sans": "Rubik"
       }
-    },
-    "transparency": {
-      "enabled": false,
-      "base": 0.85,
-      "layers": 0.4
     }
   },
   "general": {
@@ -20,12 +15,12 @@
     }
   },
   "background": {
-    "enabled": true
+    "enabled": true,
+    "visualiser": {
+      "enabled": false
+    }
   },
   "bar": {
-    "dragThreshold": 20,
-    "persistent": true,
-    "showOnHover": true,
     "status": {
       "showAudio": true,
       "showBattery": true,
@@ -54,12 +49,9 @@
     "thickness": 8
   },
   "dashboard": {
-    "mediaUpdateInterval": 1000,
-    "visualiserBars": 32
+    "mediaUpdateInterval": 1000
   },
   "launcher": {
-    "actionPrefix": ">",
-    "dragThreshold": 50,
     "vimKeybinds": true,
     "enableDangerousActions": false,
     "maxShown": 6,
@@ -76,7 +68,7 @@
     "recolourLogo": true
   },
   "notifs": {
-    "actionOnClick": false,
+    "actionOnClick": true,
     "clearThreshold": 0.3,
     "defaultExpireTimeout": 6000,
     "expandThreshold": 20,
@@ -87,10 +79,18 @@
   },
   "services": {
     "audioIncrement": 0.02,
-    "useFahrenheit": false
+    "useFahrenheit": false,
+    "defaultPlayer": "YouTube Music",
+    "playerAliases": [{
+      "com.github.th_ch.youtube_music": "YouTube Music"
+    }],
+    "weatherLocation": "",
+    "useFahrenheit": false,
+    "useTwelveHourClock": false,
+    "smartScheme": true,
+    "visualiserBars": 32
   },
   "session": {
-    "dragThreshold": 30,
     "vimKeybinds": false
   }
 }
