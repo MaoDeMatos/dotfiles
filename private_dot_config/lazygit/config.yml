@@ -1,6 +1,7 @@
+notARepository: "skip"
 git:
+  branchLogCmd: "git tree --color=always --"
   merging:
     args: "--no-ff --no-commit"
-  branchLogCmd: "git tree --"
 gui:
   nerdFontsVersion: "3"
