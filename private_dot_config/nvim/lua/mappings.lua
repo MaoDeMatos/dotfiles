@@ -18,6 +18,9 @@ map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 -- map("n", "<leader>k", ":bprevious<CR>")
 -- map("n", "<leader>bd", ":bd<CR>")
 
+-- Disable the substitute command on 's' entirely to use 'mini.surround'
+vim.keymap.set("n", "s", "<Nop>", { noremap = true, silent = true })
+
 -- Same behavior as the default keybinding, but keeping the cursor in place
 map("n", "J", "mzJ`z")
 

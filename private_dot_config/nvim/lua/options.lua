@@ -24,6 +24,7 @@ o.number = true -- add line numbers
 o.relativenumber = true
 
 o.wrap = true -- line wrap
+o.linebreak = true -- wrap on whitespace
 
 -- split window default directions
 o.splitbelow = true
@@ -32,7 +33,7 @@ o.splitright = true
 o.scrolloff = 4 -- number of lines to display ahead of the cursor
 o.signcolumn = "yes" -- always display symbols gutter (avoids jumping gutter when no symbols are displayed)
 
-o.clipboard = "unnamedplus"
+o.clipboard = "unnamedplus" -- use system clipboard by default
 
 -- sync buffers automatically
 o.autoread = true

@@ -21,6 +21,7 @@ M.nvdash = { load_on_startup = true }
 
 -- Always load 'tabufline' to access the theme toggle
 M.ui = {
+  -- theme = "m3theme",
   tabufline = {
     lazyload = false,
   },

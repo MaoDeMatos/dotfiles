@@ -30,9 +30,9 @@ return {
         "stylua",
         "html-lsp",
         "css-lsp",
-        "prettier",
+        -- "prettier",
         "prettierd",
-        -- "pyre", -- Python type checker
+        "pyre", -- Python type checker
         "ruff",
       },
     },
@@ -50,5 +50,42 @@ return {
         "python",
       },
     },
+  },
+
+  -- {
+  --   "kylechui/nvim-surround",
+  --   event = "VeryLazy",
+  --   opts = {},
+  -- },
+
+  {
+    "echasnovski/mini.surround",
+    version = "*",
+    -- event = "BufReadPost", -- lazy-load on buffer read
+    keys = {
+      { "sa", mode = { "n", "v" }, desc = "Add surrounding" },
+      { "sd", desc = "Delete surrounding" },
+      { "sr", desc = "Replace surrounding" },
+      { "sf", desc = "Find surrounding" },
+      { "sF", desc = "Find surrounding left" },
+      { "sh", desc = "Highlight surrounding" },
+      { "sn", desc = "Update n_lines" },
+    },
+    config = function()
+      require("mini.surround").setup()
+    end,
+
+    -- opts = {
+    --   mappings = {
+    --     add = "sa", -- Add surrounding in Normal and Visual modes
+    --     delete = "sd", -- Delete surrounding
+    --     replace = "sr", -- Replace surrounding
+    --     find = "sf", -- Find surrounding (to the right)
+    --     find_left = "sF", -- Find surrounding (to the left)
+    --     highlight = "sh", -- Highlight surrounding
+    --     update_n_lines = "sn", -- Update `n_lines`
+    --     -- You can change or disable mappings by assigning different keys or <Nop>
+    --   },
+    -- },
   },
 }
