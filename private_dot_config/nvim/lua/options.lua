@@ -6,24 +6,24 @@ vim.o.showmatch = true
 -- vim.o.ignorecase = true    --- case insensitive
 -- vim.o.smartcase = true     --- if search term has an uppercase letter, case sensitive
 
-vim.o.tabstop = 2             --- number of columns occupied by a tab
-vim.o.softtabstop = 2         --- see multiple spaces as tabstops so <BS> does the right thing
-vim.o.shiftwidth = 2          --- width for autoindents
-vim.o.expandtab = true        --- converts tabs to white space
+vim.o.tabstop = 2      --- number of columns occupied by a tab
+vim.o.softtabstop = 2  --- see multiple spaces as tabstops so <BS> does the right thing
+vim.o.shiftwidth = 2   --- width for autoindents
+vim.o.expandtab = true --- converts tabs to white space
 -- vim.o.autoindent = true      --- indent a new line the same amount as the line just typed
 
 -- vim.o.number = true          --- add line numbers
 -- vim.o.relativenumber = true
 
-vim.o.wrap = true             --- line wrap
-vim.o.linebreak = true        --- wrap on whitespace
+vim.o.wrap = true      --- line wrap
+vim.o.linebreak = true --- wrap on whitespace
 
 -- split window default directions
 vim.o.splitbelow = true
 vim.o.splitright = true
 
-vim.o.scrolloff = 4           --- number of lines to display ahead of the cursor
-vim.o.signcolumn = "yes"      --- always display symbols gutter (avoids jumping gutter when no symbols are displayed)
+vim.o.scrolloff = 4      --- number of lines to display ahead of the cursor
+vim.o.signcolumn = "yes" --- always display symbols gutter (avoids jumping gutter when no symbols are displayed)
 
 --- use system clipboard by default
 vim.o.clipboard = "unnamedplus"
@@ -33,4 +33,11 @@ vim.o.autoread = true
 vim.o.swapfile = false
 
 vim.opt.sessionoptions:remove('blank')
-vim.o.listchars = table.concat({ "extends:…", "nbsp:␣", "multispace:·", "trail:·", "precedes:…", "tab:> " }, ",")
+vim.o.listchars = table.concat({
+  "extends:…",
+  "nbsp:␣",
+  "multispace:·",
+  "trail:·",
+  "precedes:…",
+  "tab:> ",
+}, ",")
