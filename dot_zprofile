@@ -1,17 +1,10 @@
-# set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
-# set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
+    # source "$HOME/.local/bin/env"
 fi
 
 export EDITOR='nvim'
-
-# TODO: This should be Linux-only
-# Run GUI
-if uwsm check may-start; then
-    exec uwsm start hyprland-uwsm.desktop
-fi
