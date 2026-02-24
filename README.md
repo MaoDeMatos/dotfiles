@@ -6,12 +6,7 @@ This documentation contains everything related to the setup & management of thes
 
 Setup SSH keys.
 
-Install:
-
-- `chezmoi` (dotfiles management)
-- `zsh starship`
-
-Run
+Install `zsh` & `chezmoi` and then, pull this repo with:
 
 ```sh
 chezmoi init git@github.com:MaoDeMatos/dotfiles.git
@@ -23,6 +18,10 @@ chezmoi init git@github.com:MaoDeMatos/dotfiles.git
 > WIP. Need to script this with `chezmoi`.
 
 ```sh
-git clone https://github.com/Skylor-Tang/auto-venv.git ~/.oh-my-zsh/custom/plugins/auto-venv
+# git clone https://github.com/Skylor-Tang/auto-venv.git ~/.oh-my-zsh/custom/plugins/auto-venv # Deprecated for `uv`
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
 ```
+
+### (optional)
+
+- [`starship`](https://starship.rs/install.sh)
