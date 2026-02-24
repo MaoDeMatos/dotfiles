@@ -3,16 +3,23 @@ local config = wezterm.config_builder()
 
 local utils = require("custom-utils")
 
-config.automatically_reload_config = true
+config.automatically_reload_config = false
 
 ---
 --- General & window settings
 ---
-config.font_size = 12
-config.font = wezterm.font({
-  -- family = "Fira Code", --- If there's any issues with Iosevka
-  family = "Iosevka Term",
+config.audible_bell = "Disabled"
+
+--- Use Medium font weight for better legibility when using Light mode
+config.font = wezterm.font("Iosevka Term", {
+  weight = utils.ui.is_dark and "Regular" or "Medium",
 })
+config.font_size = 12
+
+--- Should be replaced at some point by `inactive_font_opacity`
+config.inactive_pane_hsb = {
+  brightness = utils.ui.is_light and 0.87 or 0.60,
+}
 
 --- Remove padding for clean TUIs
 config.window_padding = {
@@ -21,6 +28,9 @@ config.window_padding = {
   top = 0,
   bottom = 0,
 }
+
+--- Enable resizing by cell increments only to avoid gaps around TUIs
+config.use_resize_increments = false
 
 --- Default window size
 config.initial_cols = 128
@@ -35,9 +45,10 @@ config.tab_bar_at_bottom = true
 ---
 
 if utils.is_darwin then
-  config.window_decorations = "TITLE | RESIZE | MACOS_FORCE_ENABLE_SHADOW | MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"
+  config.window_decorations =
+  "TITLE | RESIZE | MACOS_FORCE_ENABLE_SHADOW | MACOS_USE_BACKGROUND_COLOR_AS_TITLEBAR_COLOR"
 
-  config.window_background_opacity = 0.92
+  config.window_background_opacity = 0.96
   config.macos_window_background_blur = 32
 end
 
