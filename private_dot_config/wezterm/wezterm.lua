@@ -18,15 +18,15 @@ config.font_size = 12
 
 --- Should be replaced at some point by `inactive_font_opacity`
 config.inactive_pane_hsb = {
-  brightness = utils.ui.is_light and 0.87 or 0.60,
+  brightness = utils.ui.is_light and 0.87 or 0.67,
 }
 
 --- Remove padding for clean TUIs
 config.window_padding = {
-  left = 0,
-  right = 0,
-  top = 0,
-  bottom = 0,
+  left = 2,
+  right = 2,
+  top = 2,
+  bottom = 2,
 }
 
 --- Enable resizing by cell increments only to avoid gaps around TUIs
@@ -53,7 +53,7 @@ if utils.is_darwin then
 end
 
 if utils.is_linux then
-  config.window_background_opacity = 0.72
+  config.window_background_opacity = 0.92
   config.kde_window_background_blur = true
 end
 
@@ -65,6 +65,9 @@ end
 --- Configure keybindings
 --- Pretty self-explanatory, innit'?
 config.keys = require("keys")
+config.key_tables = {
+  peek_mode = require("peek_to_alternate").peek_map
+}
 
 --- Import local overrides file if it exists
 local exists, override = pcall(require, "local-overrides")
