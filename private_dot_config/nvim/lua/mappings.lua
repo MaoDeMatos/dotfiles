@@ -2,7 +2,7 @@ local map = vim.keymap.set
 
 local split_sensibly = function()
   if vim.api.nvim_win_get_width(0) > math.floor(vim.api.nvim_win_get_height(0) * 2.3) then
-    vim.cmd("vs")
+    vim.cmd("vsplit")
   else
     vim.cmd("split")
   end
@@ -12,7 +12,7 @@ end
 --- General ---
 ---------------
 
-map("n", "<esc>", "<cmd>noh<CR>", { desc = "general clear highlights" })
+map("n", "<esc>", "<cmd>noh<CR>", { desc = "General clear highlights" })
 map("n", "<leader>e", require("mini.files").open, { desc = "Open file explorer" })
 
 --- Center cursor after finding next/previous search term
@@ -34,22 +34,10 @@ end, { desc = 'Lazygit' })
 --- Edition ---
 ---------------
 
---- Insert empty line above or below cursor
-map("n", "<leader>O", "[<leader>", { remap = true }, { desc = "Insert empty line above cursor" })
-map("n", "<leader>o", "]<leader>", { remap = true }, { desc = "Insert empty line below cursor" })
-
 --- Same behavior as the default keybinding, but keeping the cursor in place
 map("n", "J", "mzJ`z")
 
-map("n",
-  "<leader>rw",
-  function()
-    local word = vim.fn.expand("<cword>")
-    local cmd = ":%s/" .. word .. "/"
-    vim.api.nvim_feedkeys(cmd, "n", false)
-  end,
-  { desc = "Replace word under cursor" }
-)
+map("n", "<leader>rw", ":%s/<C-r><C-w>/", { desc = "Replace word under cursor" })
 
 ---------------
 --- Buffers ---
@@ -67,12 +55,21 @@ local pick = require("mini.pick").builtin
 local extra_pick = require("mini.extra").pickers
 
 map("n", "<leader>ff", pick.files, { desc = "Find file" })
-map("n", "<leader>fo", extra_pick.oldfiles, { desc = "Find recent file" })
+map("n", "<leader>fo", extra_pick.oldfiles, { desc = "Find recently opened file" })
 map("n", "<leader>fw", pick.grep_live, { desc = "Find word" })
-map("n", "<leader>fr", pick.resume, { desc = "Resume last find" })
---- TODO: Add "find current word" (word under the cursor) using <cword>
+map("n", "<leader>fr", pick.resume, { desc = "Resume last search" })
 
-map("n", "<leader>fd", extra_pick.diagnostic, { desc = "Open diagnostics" })
+--- WIP
+-- map("n", "<leader>fc", function()
+--   pick.grep({ pattern = vim.fn.expand("<cword>") })
+-- end, { desc = "Find current word" })
+--
+-- map("v", "<leader>fc", function()
+--   local lines = vim.fn.getregion(vim.fn.getpos('.'), vim.fn.getpos('v'), { type = vim.fn.mode() })
+--   pick.grep({ pattern = table.concat(lines, '\n') })
+-- end, { desc = "Find current selection" })
+
+map("n", "<leader>fd", extra_pick.diagnostic, { desc = "Open (find) diagnostics" })
 map("n", "<leader>fb", pick.buffers, { desc = "Find buffer" })
 
 map("n", "<leader>fh", pick.help, { desc = "Find help page" })

@@ -1,11 +1,16 @@
 -- from https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
-vim.lsp.config('lua_ls', {
+return {
+  on_attach = function(client, _buf_id)
+    -- Reduce very long list of triggers for better 'mini.completion' experience
+    client.server_capabilities.completionProvider.triggerCharacters =
+    { '.', ':', '#', '(' }
+  end,
+
   on_init = function(client)
     if client.workspace_folders then
       local path = client.workspace_folders[1].name
       if
-        path ~= vim.fn.stdpath('config')
-        and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+          path ~= vim.fn.stdpath('config') and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
       then
         return
       end
@@ -23,6 +28,7 @@ vim.lsp.config('lua_ls', {
           'lua/?/init.lua',
         },
       },
+
       -- Make the server aware of Neovim runtime files
       workspace = {
         checkThirdParty = false,
@@ -32,7 +38,8 @@ vim.lsp.config('lua_ls', {
       }
     })
   end,
+
   settings = {
     Lua = {}
   }
-})
+}

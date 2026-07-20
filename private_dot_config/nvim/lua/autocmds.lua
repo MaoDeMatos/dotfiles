@@ -1,4 +1,5 @@
 --- Set working directory to the current file's directory on startup
+--- Useful for file explorer plugins, some commands etc...
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
   group = vim.api.nvim_create_augroup("SetWorkingDir", { clear = true }),
   callback = function()
@@ -18,14 +19,7 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
   end,
 })
 
---- Disable line numbers in Terminals
-vim.api.nvim_create_autocmd("TermEnter", {
-  callback = function()
-    vim.o.number = false
-    vim.o.relativenumber = false
-  end
-})
-
+--- Quite self explanatory
 vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*",
   callback = function()
@@ -35,22 +29,17 @@ vim.api.nvim_create_autocmd("BufEnter", {
   end,
 })
 
+--- Disable line numbers in Terminals
+vim.api.nvim_create_autocmd("TermEnter", {
+  callback = function()
+    vim.o.number = false
+    vim.o.relativenumber = false
+  end
+})
+
 --- Automatically close terminal Buffers when their Process is done
 vim.api.nvim_create_autocmd("TermClose", {
   callback = function()
     vim.cmd("bdelete")
   end
 })
-
---- Open mini map automatically when selecting using mini.starter
-local opts = vim.api.nvim_create_autocmd('User', {
-    pattern = 'MiniStarterOpened',
-    callback = function()
-      local rhs = function()
-        require("mini.starter").eval_current_item()
-        require("mini.map").open()
-      end
-      vim.keymap.set('n', '<CR>', rhs, { buffer = true })
-    end,
-  }
-)

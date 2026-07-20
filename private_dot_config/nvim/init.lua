@@ -1,21 +1,22 @@
 ---
---- 'mini.nvim' setup
+--- ˚ʚ♡ɞ˚ NeoVim config ˚ʚ♡ɞ˚
 ---
 
-local path_package = vim.fn.stdpath('data') .. '/site'
-local mini_path = path_package .. '/pack/deps/start/mini.nvim'
-if not vim.loop.fs_stat(mini_path) then
-  vim.cmd('echo "Installing `mini.nvim`" | redraw')
-  local clone_cmd = {
-    'git', 'clone', '--filter=blob:none',
-    --- Uncomment next line to use 'stable' branch
-    -- '--branch', 'stable',
-    'https://github.com/nvim-mini/mini.nvim', mini_path
-  }
-  vim.fn.system(clone_cmd)
-  vim.cmd('packadd mini.nvim | helptags ALL')
-  vim.cmd('echo "Installed `mini.nvim`" | redraw')
-end
+---
+--- Dependencies
+---
+
+vim.pack.add({
+  { src = 'https://github.com/nvim-mini/mini.nvim' },
+  { src = 'https://github.com/nvim-treesitter/nvim-treesitter-context', name = 'treesitter-context' },
+  { src = 'https://github.com/nvim-treesitter/nvim-treesitter',         version = 'master' },
+  { src = 'https://github.com/neovim/nvim-lspconfig' },
+  { src = 'https://github.com/stevearc/conform.nvim' },
+})
+
+vim.api.nvim_create_user_command('UpdateDeps', function()
+  vim.pack.update()
+end, {})
 
 ---
 --- Custom options
@@ -24,12 +25,6 @@ end
 vim.g.mapleader = " "
 require("options")
 
----
---- Start 'mini.deps'
----
-
-require('mini.deps').setup({ path = { package = path_package } })
-local add, later = MiniDeps.add, MiniDeps.later
 
 ---
 --- Core features
@@ -79,17 +74,17 @@ require("mini.starter").setup({
         section = "Search"
       }
     },
-    require("mini.starter").sections.sessions(5, true),
-    require("mini.starter").sections.recent_files(5, false, false),
+    require("mini.starter").sections.sessions(8, true),
+    require("mini.starter").sections.recent_files(8, false, false),
     -- require("mini.starter").sections.recent_files(5, true, false),
   },
   header = function()
-      local v = vim.version()
-      local versionstring = string.format("\n v%d.%d.%d", v.major, v.minor, v.patch)
-      --- Every "image" is an array with lines of chars
-      local imageData = require("ascii/neovim").delta_corps_priest1
-      -- local imageData = require("ascii/neovim").ansi_shadow
-      return table.concat(imageData, "\n" ) .. versionstring
+    local v = vim.version()
+    local versionstring = string.format("\n v%d.%d.%d", v.major, v.minor, v.patch)
+    --- Every "image" is an array with lines of chars
+    local imageData = require("ascii/neovim").delta_corps_priest1
+    -- local imageData = require("ascii/neovim").ansi_shadow
+    return table.concat(imageData, "\n") .. versionstring
   end
 })
 
@@ -107,11 +102,32 @@ require("mini.indentscope").setup({
 -- require("mini.trailspace").setup()
 require("mini.notify").setup()
 
+--- Context aware sticky headers
+vim.schedule(function()
+  require("treesitter-context").setup({
+    multiline_threshold = 1,
+    mode = "topline",
+    on_attach = function(buf)
+      -- List of filetypes to disable
+      local disabled_filetypes = { "markdown", "text", "csv" }
+      local filetype = vim.bo[buf].filetype
+
+      if vim.tbl_contains(disabled_filetypes, filetype) then
+        return false
+      end
+      return true
+    end,
+  })
+end)
+
 ---
 --- New features
 ---
 
 require("mini.pick").setup({
+  mappings = {
+    paste = '<C-S-v>',
+  },
   window = {
     prompt_prefix = '   ',
   },
@@ -141,17 +157,7 @@ require("theme")
 --- Treesitter
 ---
 
-later(function()
-  add({
-    source = 'nvim-treesitter/nvim-treesitter',
-    -- Use 'master' while monitoring updates in 'main'
-    checkout = 'master',
-    monitor = 'main',
-    hooks = {
-      post_checkout = function() vim.cmd('TSUpdate') end
-    },
-  })
-
+vim.schedule(function()
   require('nvim-treesitter.configs').setup({
     ensure_installed = {
       'lua',
@@ -182,20 +188,16 @@ end)
 ---
 
 -- Load LSP configs
-later(function()
-  add({
-    source = 'neovim/nvim-lspconfig',
-    checkout = 'master',
-  })
-
+vim.schedule(function()
   local servers = {
     "lua_ls",
     "html",
     "cssls",
     "ts_ls",
     "bashls",
-    "pyright",
-    "ruff"
+    -- "pyright",
+    "ty",
+    "ruff",
   }
 
   vim.lsp.enable(servers)
@@ -205,12 +207,7 @@ end)
 --- Formatter
 ---
 
-later(function()
-  add({
-    source = 'stevearc/conform.nvim',
-    checkout = 'master',
-  })
-
+vim.schedule(function()
   -- 'prettier' first so it uses the project's local dependency if present
   -- 'prettierd' is installed system-wide as fallback
   local prettier_config = { "prettier", "prettierd", stop_after_first = true }
@@ -232,8 +229,8 @@ later(function()
       typescriptreact = prettier_config,
       python = {
         -- Fix lint errors
-        "ruff_fix", -- Ruff linter (flake8)
-        "ruff_format", -- Ruff formatter (black)
+        "ruff_fix",              -- Ruff linter (flake8)
+        "ruff_format",           -- Ruff formatter (black)
         "ruff_organize_imports", -- Ruff import sorter (isort)
       },
     },
