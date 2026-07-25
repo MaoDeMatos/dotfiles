@@ -53,8 +53,8 @@ if utils.is_darwin then
 end
 
 if utils.is_linux then
-  config.window_background_opacity = 0.92
-  config.kde_window_background_blur = true
+  config.window_background_opacity = 0.78
+  config.wayland_window_background_blur = true
 end
 
 if utils.is_windows then
