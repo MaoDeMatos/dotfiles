@@ -1,13 +1,14 @@
 # Get editor completion based on the config schema
 '$schema' = 'https://starship.rs/config-schema.json'
 
-add_newline = false
+add_newline = true
 continuation_prompt = "[❯❯ ](dimmed white)"
 
-format = """($nix_shell$container$fill$git_metrics$cmd_duration\n)\
-$character$os$username$directory$git_branch$git_status\n\
-🦊 """
-right_format = """$all$battery$time"""
+# format = """($nix_shell$container$git_metrics$battery$time$all$cmd_duration$line_break)\
+format = """($battery$time$all$git_metrics$cmd_duration$line_break)\
+$character$os$username$directory$git_branch$git_status"""
+# format = "$character$os$username$directory$git_branch$git_status"
+# right_format = "$cmd_duration$all$battery$time"
 
 [fill]
 symbol = ' '
@@ -27,11 +28,11 @@ read_only = ' 󰌾'
 
 [cmd_duration]
 min_time = 0
-format = "[ took $duration](italic white)"
+format = "[$duration duration](italic white) "
 
 # Battery display at different levels
 [battery]
-format = "[ $percentage $symbol]($style)"
+format = "[$percentage $symbol]($style) "
 full_symbol = "󰁹"
 charging_symbol = "[󰂄](italic bold green)"
 discharging_symbol = "󱟞"
@@ -52,7 +53,7 @@ style = "italic dimmed bright-green"
 
 [time]
 disabled = false
-format = "[ $time]($style)"
+format = "[$time]($style) "
 time_format = "%R"
 utc_time_offset = "local"
 style = "italic dimmed white"
@@ -66,7 +67,7 @@ symbol = ' '
 style = 'bold red'
 truncation_symbol = "⋯"
 truncation_length = 11
-ignore_branches = ["main", "master"]
+# ignore_branches = ["main", "master"]
 only_attached = true
 
 [git_commit]
@@ -74,25 +75,24 @@ tag_symbol = '  '
 style = 'bold yellow'
 
 [git_metrics]
-format = '([▴$added]($added_style))([▿$deleted]($deleted_style))'
 added_style = 'italic dimmed green'
 deleted_style = 'italic dimmed red'
 ignore_submodules = true
 disabled = false
 
 [git_status]
-stashed = '◆ $count '
-conflicted = '✘ '
-modified = '[!=](yellow) '
-staged = '[++\($count\)](orange) '
+stashed = '◆ $count'
+conflicted = '✘'
+modified = '[!=](yellow)'
+staged = '[+\($count\)](orange)'
 deleted = ''
 renamed = ''
-untracked = '[?](yellow) '
+untracked = '[?](yellow)'
 up_to_date = '[√](green)'
 ahead = '↑ ${count}'
 behind = '↓ ${count}'
 diverged = '⇕ ↑ ${ahead_count} ↓ ${behind_count}'
-format = "([\\[$all_status$ahead_behind\\]]($style)) "
+# format = '([$all_status$ahead_behind]($style) )'
 
 # Languages/envs
 [os]
@@ -106,7 +106,7 @@ Alpine = " "
 AlmaLinux = " "
 Amazon = " "
 Android = " "
-Arch = "[ ](cyan)"
+Arch = " "
 Artix = " "
 CachyOS = " "
 CentOS = " "
@@ -240,7 +240,7 @@ symbol = " "
 format = '[$symbol nix⎪$state⎪]($style) [$name](italic dimmed white)'
 impure_msg = '[⌽](bold dimmed red)'
 pure_msg = '[⌾](bold dimmed green)'
-unknown_msg = '[◌](bold dimmed ellow)'
+unknown_msg = '[◌](bold dimmed yellow)'
 
 [nodejs]
 symbol = " "
